@@ -141,9 +141,23 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-wrap justify-center md:justify-start gap-6 text-sm text-gray-400 mb-6 md:mb-0">
-              <a className="group relative hover:text-white transition-colors duration-300">
+              <a
+                tabIndex={0}
+                aria-describedby="privacy-policy-tooltip"
+                className="group relative cursor-help hover:text-white focus:text-white focus:outline-none transition-colors duration-300"
+              >
                 <span className="relative z-10">Privacy Policy</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 -inset-2"></div>
+                <div
+                  id="privacy-policy-tooltip"
+                  role="tooltip"
+                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 max-w-[80vw] z-20 px-4 py-3 rounded-xl border border-gray-700/50 bg-gray-800 text-xs leading-relaxed text-gray-300 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300"
+                >
+                  We respect your privacy. We only collect the information
+                  needed to run JobPortal and never share your personal data
+                  with third parties without your consent.
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 -mt-1 rotate-45 bg-gray-800 border-r border-b border-gray-700/50"></span>
+                </div>
               </a>
               <a className="group relative hover:text-white transition-colors duration-300">
                 <span className="relative z-10">Terms of Service</span>
