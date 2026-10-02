@@ -1,0 +1,1 @@
+- [Application flow review 2026-10](project_application_flow_review.md) — open (unfixed) bugs in apply -> employer applicants flow; re-verify before fixing

@@ -1,0 +1,2 @@
+- [Rules vs code drift](project_rules_vs_code_drift.md) — tabs/named exports/no-dark: rules violated codebase-wide; dark: is the working mechanism; report systemically
+- [Data layer dual write](project_data_layer_dual_write.md) — pages bypass JobContext and write job localStorage directly; double-merge of globalPostedJobs; unguarded JSON.parse

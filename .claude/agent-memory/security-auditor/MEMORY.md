@@ -1,0 +1,1 @@
+- [Trust boundaries & recurring weaknesses](project_trust_boundaries.md) — localStorage session/role, globalPostedJobs data path, IDOR on job-applicants, console logging

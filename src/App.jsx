@@ -1,5 +1,6 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 import { JobProvider } from "./context/JobContext";
 import { CompaniesProvider } from "./contexts/CompaniesContext";
@@ -7,24 +8,46 @@ import { JobsDataProvider } from "./contexts/JobsDataContext";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Home from "./pages/Home";
-import Jobs from "./pages/Jobs";
-import JobDetail from "./pages/JobDetail";
-import Companies from "./pages/Companies";
-import CompanyDetail from "./pages/CompanyDetail";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import AppliedJobs from "./pages/AppliedJobs";
-import SavedJobs from "./pages/SavedJobs";
-import PostJob from "./pages/PostJob";
-import MyJobs from "./pages/MyJobs";
-import JobApplicants from "./pages/JobApplicants";
-import Profile from "./pages/Profile";
-import Contact from "./pages/Contact";
-import Dashboard from "./pages/admin/Dashboard";
-import CompanyManagement from "./pages/admin/CompanyManagement";
-import EmployerManagement from "./pages/admin/EmployerManagement";
-import ContactMessages from "./pages/admin/ContactMessages";
+
+// Lazy-loaded pages — each is split into its own chunk and fetched on first visit
+const Home = lazy(() => import("./pages/Home"));
+const Jobs = lazy(() => import("./pages/Jobs"));
+const JobDetail = lazy(() => import("./pages/JobDetail"));
+const Companies = lazy(() => import("./pages/Companies"));
+const CompanyDetail = lazy(() => import("./pages/CompanyDetail"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const AppliedJobs = lazy(() => import("./pages/AppliedJobs"));
+const SavedJobs = lazy(() => import("./pages/SavedJobs"));
+const PostJob = lazy(() => import("./pages/PostJob"));
+const MyJobs = lazy(() => import("./pages/MyJobs"));
+const JobApplicants = lazy(() => import("./pages/JobApplicants"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const CompanyManagement = lazy(() => import("./pages/admin/CompanyManagement"));
+const EmployerManagement = lazy(() => import("./pages/admin/EmployerManagement"));
+const ContactMessages = lazy(() => import("./pages/admin/ContactMessages"));
+
+function PageLoader() {
+	const { theme } = useTheme();
+	const isDark = theme === "dark";
+
+	return (
+		<div
+			className={`flex min-h-screen flex-col items-center justify-center gap-3 ${
+				isDark ? "bg-gray-900 text-gray-300" : "bg-gray-50 text-gray-600"
+			}`}
+		>
+			<div
+				className={`h-10 w-10 animate-spin rounded-full border-4 border-t-transparent ${
+					isDark ? "border-blue-400" : "border-blue-600"
+				}`}
+			/>
+			<p className="text-sm font-medium">Loading...</p>
+		</div>
+	);
+}
 
 function App() {
   return (
@@ -35,6 +58,7 @@ function App() {
             <ThemeProvider>
               <Router>
                 <ScrollToTop />
+								<Suspense fallback={<PageLoader />}>
                 <Routes>
                 <Route path="/" element={<Layout />}>
                   <Route index element={<Home />} />
@@ -137,6 +161,7 @@ function App() {
                   <Route path="contact" element={<Contact />} />
                 </Route>
               </Routes>
+								</Suspense>
             </Router>
           </ThemeProvider>
           </CompaniesProvider>

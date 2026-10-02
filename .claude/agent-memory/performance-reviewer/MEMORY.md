@@ -1,0 +1,2 @@
+- [Hot paths and data scale](hot-paths-and-data-scale.md) — 1000 mock jobs, ~35 companies; home page is the hot path; calibrate severity
+- [Context provider anti-patterns](context-provider-anti-patterns.md) — unmemoized values, loading reused for refresh, shared auth isLoading gating ProtectedRoute
