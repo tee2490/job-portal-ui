@@ -1,0 +1,1 @@
+- [Auth seed users location](auth-seed-users-location.md) — credentials are DUMMY_USERS in AuthContext.jsx, not mockData; login compare details
