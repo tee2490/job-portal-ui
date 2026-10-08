@@ -162,10 +162,27 @@ const Footer = () => {
 						<span className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 -inset-2"></span>
 					</button>
 				</Tooltip>
-              <a className="group relative hover:text-white transition-colors duration-300">
-                <span className="relative z-10">Terms of Service</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </a>
+				<Tooltip
+					content={
+						<>
+							<span className="block mb-1 font-semibold text-white">
+								Terms of Service
+							</span>
+							By using JobPortal you agree to provide accurate information,
+							use the platform only for lawful job searching and hiring, and
+							respect other users. We may suspend accounts that violate
+							these terms.
+						</>
+					}
+				>
+					<button
+						type="button"
+						className="group relative cursor-help hover:text-white focus:text-white focus:outline-none transition-colors duration-300"
+					>
+						<span className="relative z-10">Terms of Service</span>
+						<span className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 -inset-2"></span>
+					</button>
+				</Tooltip>
 				<Tooltip
 					content={
 						<>
