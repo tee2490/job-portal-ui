@@ -1,0 +1,1 @@
+- [Recurring data-layer issues](recurring_data_layer_issues.md) — duplicate job mutation paths, localStorage key drift, unguarded JSON.parse, dark: usage
